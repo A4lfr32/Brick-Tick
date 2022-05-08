@@ -110,9 +110,9 @@
                 "actualTime": new Date(),
                 "final": new Date(),
                 "lastTime": new Date(),
-                "AcumMilliSeconds":0,
+                "AcumMilliSeconds": 0,
                 "porcentaje": 0.4,
-                "estado": "Start",
+                "estado": "start",
                 "paused": true,
                 "TemporizadorT_CronometroF": true,
                 "children": {
@@ -122,9 +122,9 @@
                         "actualTime": new Date(),
                         "final": new Date(),
                         "lastTime": new Date(),
-                        "AcumMilliSeconds":0,
+                        "AcumMilliSeconds": 0,
                         "porcentaje": 0.0,
-                        "estado": "Start",
+                        "estado": "start",
                         "paused": true,
                         "TemporizadorT_CronometroF": false
                     },
@@ -134,9 +134,9 @@
                         "actualTime": new Date(),
                         "final": new Date(),
                         "lastTime": new Date(),
-                        "AcumMilliSeconds":0,
+                        "AcumMilliSeconds": 0,
                         "porcentaje": 0.0,
-                        "estado": "Start",
+                        "estado": "start",
                         "paused": true,
                         "TemporizadorT_CronometroF": false
                     }
@@ -148,9 +148,9 @@
                 "actualTime": new Date(),
                 "final": new Date(),
                 "lastTime": new Date(),
-                "AcumMilliSeconds":0,
+                "AcumMilliSeconds": 0,
                 "porcentaje": 0.0,
-                "estado": "Start",
+                "estado": "start",
                 "paused": true,
                 "TemporizadorT_CronometroF": false
             },
@@ -160,9 +160,9 @@
                 "actualTime": new Date(),
                 "final": new Date(),
                 "lastTime": new Date(),
-                "AcumMilliSeconds":0,
+                "AcumMilliSeconds": 0,
                 "porcentaje": 0.0,
-                "estado": "Start",
+                "estado": "start",
                 "paused": true,
                 "TemporizadorT_CronometroF": true
             },
@@ -172,9 +172,9 @@
                 "actualTime": new Date(),
                 "final": new Date(),
                 "lastTime": new Date(),
-                "AcumMilliSeconds":0,
+                "AcumMilliSeconds": 0,
                 "porcentaje": 0.0,
-                "estado": "Start",
+                "estado": "start",
                 "paused": true,
                 "TemporizadorT_CronometroF": true
             },
@@ -184,9 +184,9 @@
                 "actualTime": new Date(),
                 "final": new Date(),
                 "lastTime": new Date(),
-                "AcumMilliSeconds":0,
+                "AcumMilliSeconds": 0,
                 "porcentaje": 0.0,
-                "estado": "Start",
+                "estado": "start",
                 "paused": true,
                 "TemporizadorT_CronometroF": true
             }
@@ -206,11 +206,11 @@
                     element.actualTime = new Date();
                     element.final = element.actualTime;
                     if (element.TemporizadorT_CronometroF) {
-                        var time = timeFormat(element.actualTime - element.lastTime);
-                        document.getElementById(`Timer${index}`).innerHTML = time;
+                        element.AcumMilliSeconds+=1000
                     }
                     else {
-                        element.porcentaje += 0.01 * (1 - element.porcentaje);
+                        element.AcumMilliSeconds-=1000
+                        // element.porcentaje += 0.01 * (1 - element.porcentaje);
                     }
                     document.getElementById(`timeProgress${index}`).style.width = `${100 * element.porcentaje}%`;
                     if (element.actualTime.getHours() == 0 && element.actualTime.getMinutes() == 0 && element.actualTime.getSeconds() == 0) {
@@ -219,27 +219,30 @@
                     }
                 }
                 else {
-                    element.lastTime= new Date(element.lastTime.getTime()+1000);
+                    element.lastTime = new Date(element.lastTime.getTime() + 1000);
                     // element.lastTime = Date(element.lastTime.getTime() +1000);
                     // var time = timeFormat(element.actualTime-element.lastTime);
                     // element.lastTime = new Date(new Date()-(element.actualTime - element.lastTime));
+                }
+                if (element.estado=="edit"){
+
+                }
+                else {
+                    document.getElementById(`Timer${index}`).innerHTML =element.AcumMilliSeconds>=0? timeFormat(element.AcumMilliSeconds):"00:00";
+
                 }
             });
             if (flagAtLeastOne) {
                 generalTimeCounter = new Date(generalTimeCounter.getTime() + 1000);
             }
-            console.log(`${(generalTimeCounter) / (1000)}%`);
+            // console.log(`${(generalTimeCounter) / (1000)}%`);
             generalTimer.style.width = `${(generalTimeCounter) / (1000)}%`;
         }, 1000);
 
         function timeFormat(date) {
-            console.log(date);
-            // var h = ('00' + date.getHours()).slice(-2);
-            var h = ('00' + Math.floor(date/1000/60/60%23)).slice(-2);
-            // var m = ('00' + date.getMinutes()).slice(-2);
-            var m = ('00' + Math.floor(date/1000/60%59)).slice(-2);
-            // var s = ('00' + date.getSeconds()).slice(-2);
-            var s = ('00' + Math.floor(date/1000%59)).slice(-2);
+            var h = ('00' + Math.floor(date / 1000 / 60 / 60 % 24)).slice(-2);
+            var m = ('00' + Math.floor(date / 1000 / 60 % 60)).slice(-2);
+            var s = ('00' + Math.floor(date / 1000 % 60)).slice(-2);
             var time = h == 0 ? m + ":" + s : h + ":" + "" + m + ":" + s;
             return time
         }
@@ -255,17 +258,16 @@
         // }, 1000);
 
         Object.values(data).forEach((element, val) => {
-            console.log(val);
             template = `
         <div class="col-3">
             <div class="card">
                 <div class="card-body text-center">
                     <h5 class="card-title pb-2 border-bottom" contenteditable="true" spellcheck="false" onfocusout="data[Object.keys(data)[${val}]].title=this.innerText;">${element.title}</h5>
-                    <p id="Timer${val}" class="card-text m-4 h1">00:00</p>
+                    <p id="Timer${val}" contenteditable="true" onfocusin="data[Object.keys(data)[${val}]].estado='edit';" onfocusout="timer2millis(this,data[Object.keys(data)[${val}]]);data[Object.keys(data)[${val}]].estado='start';" class="card-text m-4 h1">00:00</p>
                     <div class="btn-group w-100" role="group" aria-label="Basic mixed styles example">
-                        <button type="button" class="btn btn-success py-0" onclick="data[Object.keys(data)[${val}]].inicio=data[Object.keys(data)[${val}]].lastTime= new Date();data[Object.keys(data)[${val}]].paused = false;">Start</button>
+                        <button type="button" class="btn btn-success py-0" onclick="data[Object.keys(data)[${val}]].inicio= new Date();data[Object.keys(data)[${val}]].paused = false;">Start</button>
                         <button type="button" class="btn btn-warning py-0" onclick="data[Object.keys(data)[${val}]].paused = !data[Object.keys(data)[${val}]].paused;">Pause</button>
-                        <button type="button" class="btn btn-danger py-0" onclick="data[Object.keys(data)[${val}]].final= new Date();data[Object.keys(data)[${val}]].paused = true;">Stop</button>
+                        <button type="button" class="btn btn-danger py-0" onclick="data[Object.keys(data)[${val}]].final= new Date();data[Object.keys(data)[${val}]].AcumMilliSeconds=0;data[Object.keys(data)[${val}]].paused = true;">Stop</button>
                     </div>
                 </div>
                 <div class="progress">
@@ -302,6 +304,16 @@
         document.addEventListener('pointerdown', function (event) {
             console.log(event.pressure);
         }, false);
+    </script>
+
+    <script>
+        function timer2millis(time,element){
+            a=time.innerText.split(":");
+            a.reverse();
+            console.log(a);
+            element.AcumMilliSeconds=a[0]*1000+a[1]*1000*60+(a[2]?a[2]*1000*60*60:0);
+            console.log(element.AcumMilliSeconds);
+        }
     </script>
 </body>
 
