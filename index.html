@@ -19,31 +19,35 @@
 <body class="container-flex">
     <header id="header" class="container row pt-3 text-center"
         style="border-bottom: inset; font-family: system-ui; position: fixed; top: 0px;background-color: white;z-index: 1;left: 50%;/* transform-origin: center; */transform: translateX(-50%);">
-        <div class="col-xl-4 col-lg-6 mb-1">
+        <div class="col-xl-3 col-lg-6 text-start">
+            <a id="backButton" class="btn btn-light" href="#" onclick="mainBrick=data[mainBrick.parent];updateBricks();"
+                style="font-weight: 900;filter: grayscale(1);">🔙</a> <!-- back button -->
+            <a class="btn btn-light active" href="#Contact" style="font-weight: 900;">Contact</a>
+            <select class="btn btn-light ps-1 pe-0" name="language" id="language" style="font-weight: 900;" disabled="">
+                <option value="english" style="font-weight: 900;">En</option>
+                <option value="spanish" style="font-weight: 900;">Es</option>
+            </select>
+            <!--a href="perfil.html" style="background-color: silver;">Perfil</a-->
+        </div>
+        <div class="col-xl-6 col-lg-6 mb-1">
             <!-- <a class="col h1 pe-1 text-reset text-decoration-none" style="font-weight: bold;" href="#body">tracktimer</a><small>47</small> -->
-            <a class="col h1 pe-1 text-reset text-decoration-none" style="font-weight: bold;"
+            <a id="mainTitle" class="col h1 pe-1 text-reset text-decoration-none" style="font-weight: bold;"
                 href="#body">bricktimer</a><small>47</small>
         </div>
-        <div class="col-xl-8 col-lg-6">
-            <nav class="topnav ms-lg-auto mx-lg-0 mx-auto" style="width: fit-content;">
-                <a class="btn btn-light" href="/perfil_previo.html"
-                    style="font-weight: 900;filter: grayscale(1);">📜</a>
-                <a class="btn btn-light" href="#Projects" style="font-weight: 900;">Projects</a>
-                <a class="btn btn-light" href="#Capabilities" style="font-weight: 900;">Capabilities</a>
-                <a class="btn btn-light active" href="#Contact" style="font-weight: 900;">Contact</a>
-                <select class="btn btn-light ps-1 pe-0" name="language" id="language" style="font-weight: 900;"
-                    disabled="">
-                    <option value="english" style="font-weight: 900;">En</option>
-                    <option value="spanish" style="font-weight: 900;">Es</option>
-                </select>
-                <!--a href="perfil.html" style="background-color: silver;">Perfil</a-->
-            </nav>
+        <div class="col-xl-3 col-lg-6 text-end">
+            <a class="btn btn-light" href="/perfil_previo.html" style="font-weight: 900;filter: grayscale(1);">📜</a>
+            <a class="btn btn-light active" href="#Contact" style="font-weight: 900;">Contact</a>
+            <select class="btn btn-light ps-1 pe-0" name="language" id="language" style="font-weight: 900;" disabled="">
+                <option value="english" style="font-weight: 900;">En</option>
+                <option value="spanish" style="font-weight: 900;">Es</option>
+            </select>
+            <!--a href="perfil.html" style="background-color: silver;">Perfil</a-->
         </div>
     </header>
 
     <!-- ☁⚜🔘🕖🗨⇲⇱ -->
     <div id="main" class="row g-4 p-4 flex-row flex-nowrap mt-5 mx-5">
-        <div class="col-3">
+        <!-- <div class="col-3">
             <div class="card">
                 <div class="card-body text-center">
                     <h5 class="card-title pb-2 border-bottom">Study
@@ -78,12 +82,12 @@
                         href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                         <h3
                             onmousedown="document.getElementById('collapseExample').classList.contains('show')?this.style.transform='scaleY(1)':this.style.transform='scaleY(-1)';">
-                            ▽
+                            <span class="pe-1">📜</span>
                         </h3>
                     </a>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
     </div>
@@ -104,8 +108,21 @@
     <script>
 
         data = {
+            "bricktimer": {
+                "title": "bricktimer",
+                "inicio": new Date(),
+                "actualTime": new Date(),
+                "final": new Date(),
+                "lastTime": new Date(),
+                "AcumMilliSeconds": 0,
+                "porcentaje": 0.0,
+                "estado": "start",
+                "paused": false,
+                "TemporizadorT_CronometroF": false,
+                "children": ["0", "1", "2"]
+            },
             "0": {
-                "title": "Study",
+                "title": "Study0",
                 "inicio": new Date(),
                 "actualTime": new Date(),
                 "final": new Date(),
@@ -115,35 +132,11 @@
                 "estado": "start",
                 "paused": true,
                 "TemporizadorT_CronometroF": true,
-                "children": {
-                    "1": {
-                        "title": "Piano",
-                        "inicio": new Date(),
-                        "actualTime": new Date(),
-                        "final": new Date(),
-                        "lastTime": new Date(),
-                        "AcumMilliSeconds": 0,
-                        "porcentaje": 0.0,
-                        "estado": "start",
-                        "paused": true,
-                        "TemporizadorT_CronometroF": false
-                    },
-                    "2": {
-                        "title": "Piano",
-                        "inicio": new Date(),
-                        "actualTime": new Date(),
-                        "final": new Date(),
-                        "lastTime": new Date(),
-                        "AcumMilliSeconds": 0,
-                        "porcentaje": 0.0,
-                        "estado": "start",
-                        "paused": true,
-                        "TemporizadorT_CronometroF": false
-                    }
-                }
+                "parent": "bricktimer"
             },
+
             "1": {
-                "title": "Piano",
+                "title": "Piano1",
                 "inicio": new Date(),
                 "actualTime": new Date(),
                 "final": new Date(),
@@ -152,10 +145,13 @@
                 "porcentaje": 0.0,
                 "estado": "start",
                 "paused": true,
-                "TemporizadorT_CronometroF": false
+                "TemporizadorT_CronometroF": false,
+                "children": [3, 4, 5],
+                "parent": "bricktimer"
+
             },
             "2": {
-                "title": "Rutina",
+                "title": "Rutina2",
                 "inicio": new Date(),
                 "actualTime": new Date(),
                 "final": new Date(),
@@ -164,10 +160,11 @@
                 "porcentaje": 0.0,
                 "estado": "start",
                 "paused": true,
-                "TemporizadorT_CronometroF": true
+                "TemporizadorT_CronometroF": true,
+                "parent": "bricktimer"
             },
             "3": {
-                "title": "15min Freelance",
+                "title": "15min Freelance3",
                 "inicio": new Date(),
                 "actualTime": new Date(),
                 "final": new Date(),
@@ -176,10 +173,11 @@
                 "porcentaje": 0.0,
                 "estado": "start",
                 "paused": true,
-                "TemporizadorT_CronometroF": true
+                "TemporizadorT_CronometroF": true,
+                "parent": "bricktimer"
             },
             "4": {
-                "title": "Study",
+                "title": "Study4",
                 "inicio": new Date(),
                 "actualTime": new Date(),
                 "final": new Date(),
@@ -188,7 +186,22 @@
                 "porcentaje": 0.0,
                 "estado": "start",
                 "paused": true,
-                "TemporizadorT_CronometroF": true
+                "TemporizadorT_CronometroF": true,
+                "children": [5, 1],
+                "parent": "bricktimer"
+            },
+            "5": {
+                "title": "Study5",
+                "inicio": new Date(),
+                "actualTime": new Date(),
+                "final": new Date(),
+                "lastTime": new Date(),
+                "AcumMilliSeconds": 0,
+                "porcentaje": 0.0,
+                "estado": "start",
+                "paused": true,
+                "TemporizadorT_CronometroF": true,
+                "parent": "bricktimer"
             }
         }
 
@@ -196,53 +209,102 @@
         paused = false;
         generalTimeCounter = new Date(0);
 
+        function startTimer(element) {
+            element.inicio = new Date();
+            element.lastTime = new Date();
+            if (element.TemporizadorT_CronometroF) {
+                element.AcumMilliSeconds = 0;
+            }
+
+
+            element.paused = false;
+            element.estado = "start";
+        }
+
+        function pauseTimer(element) {
+            if (element.paused) {
+                // si estaba pausado y empieza a correr
+                element.lastTime = new Date();
+                element.estado = "start";
+            }
+            else {
+                // si estaba corriendo y pausa
+                element.AcumMilliSeconds += Math.floor(element.actualTime.getTime() - element.lastTime.getTime());
+                element.estado = "edit";
+            }
+
+            element.paused = !element.paused;
+        }
+        function focusEvent(element, event, this_) {
+            if (event == "in") {
+                element.estado = "edit";
+            } else {
+                element.AcumMilliSeconds = timer2millis(this_);
+                element.lastTime = new Date();
+                element.estado = "start";
+            }
+        }
+
+        function stopTimer(element) {
+            element.final = new Date();
+            element.paused = true;
+            element.AcumMilliSeconds = 0;
+            element.estado = "stop";
+        }
+
+
         setInterval(function () {
             let flagAtLeastOne = false;
-            Object.values(data).forEach((element, index) => {
+            mainBrick.children.forEach((elementKey) => {
+                index = elementKey;
+                element = data[elementKey];
+                // Object.values(data).forEach((element, index) => {
                 // If element is not paused
                 if (!element.paused) {
                     flagAtLeastOne = true;
                     // If element is temporizador
                     element.actualTime = new Date();
                     element.final = element.actualTime;
+                    let aux;
                     if (element.TemporizadorT_CronometroF) {
-                        element.AcumMilliSeconds+=1000
+                        aux = element.actualTime - element.lastTime + element.AcumMilliSeconds;
                     }
                     else {
-                        element.AcumMilliSeconds-=1000
+                        aux = -(element.actualTime - element.lastTime) + element.AcumMilliSeconds;
+
                         // element.porcentaje += 0.01 * (1 - element.porcentaje);
                     }
-                    document.getElementById(`timeProgress${index}`).style.width = `${100 * element.porcentaje}%`;
-                    if (element.actualTime.getHours() == 0 && element.actualTime.getMinutes() == 0 && element.actualTime.getSeconds() == 0) {
-                        element.paused = true;
-                        alert("Time is up!");
+                    if (element.estado != "edit") {
+                        if (aux <= 0) {
+                            document.getElementById(`Timer${index}`).innerHTML = "00:00";
+                            element.estado = "stop";
+                            element.paused = true;
+                            alert("Time is up!");
+                        } else {
+                            document.getElementById(`Timer${index}`).innerHTML = timeFormat(aux);
+                        }
                     }
+                    // document.getElementById(`timeProgress${index}`).style.width = `${100 * element.porcentaje}%`;
                 }
                 else {
                     element.lastTime = new Date(element.lastTime.getTime() + 1000);
-                    // element.lastTime = Date(element.lastTime.getTime() +1000);
-                    // var time = timeFormat(element.actualTime-element.lastTime);
-                    // element.lastTime = new Date(new Date()-(element.actualTime - element.lastTime));
+                    if (element.estado == "stop") {
+                        document.getElementById(`Timer${index}`).innerHTML = "00:00";
+                    }
                 }
-                if (element.estado=="edit"){
 
-                }
-                else {
-                    document.getElementById(`Timer${index}`).innerHTML =element.AcumMilliSeconds>=0? timeFormat(element.AcumMilliSeconds):"00:00";
-
-                }
             });
             if (flagAtLeastOne) {
                 generalTimeCounter = new Date(generalTimeCounter.getTime() + 1000);
             }
             // console.log(`${(generalTimeCounter) / (1000)}%`);
-            generalTimer.style.width = `${(generalTimeCounter) / (1000)}%`;
+            generalTimer.style.width = `${(generalTimeCounter / 1000) * 100 / (60 * 60 * 4)}%`; // 60s*60min*4h
         }, 1000);
 
-        function timeFormat(date) {
-            var h = ('00' + Math.floor(date / 1000 / 60 / 60 % 24)).slice(-2);
-            var m = ('00' + Math.floor(date / 1000 / 60 % 60)).slice(-2);
-            var s = ('00' + Math.floor(date / 1000 % 60)).slice(-2);
+        function timeFormat(milli) {
+            var h = ('00' + Math.floor(milli / 1000 / 60 / 60 % 24)).slice(-2);
+            var m = ('00' + Math.floor(milli / 1000 / 60 % 60)).slice(-2);
+            var s = ('00' + Math.floor(milli / 1000 % 60)).slice(-2);
             var time = h == 0 ? m + ":" + s : h + ":" + "" + m + ":" + s;
             return time
         }
@@ -256,49 +318,70 @@
         //     var time = h + ":" + m + ":" + s;
         //     document.getElementById("time").innerHTML = time;}
         // }, 1000);
+        mainBrick = data['bricktimer'];
+        // ⏳ Para el temporizador
+        // ⏱️⏳ Para el conometro
+        updateBricks();
+        function updateBricks() {
+            document.getElementById("mainTitle").innerText = mainBrick.title;
+            main.innerHTML = "";
+            backButton.onclick = function () {
+                mainBrick = data[mainBrick.parent];
+                updateBricks();
+            }
 
-        Object.values(data).forEach((element, val) => {
-            template = `
+            mainBrick.children.forEach((elementKey) => {
+                index = elementKey;
+                element = data[elementKey];
+                // )
+                // Object.values(data["bricktimer"]).forEach((element, index) => {
+                template = `
         <div class="col-3">
             <div class="card">
                 <div class="card-body text-center">
-                    <h5 class="card-title pb-2 border-bottom" contenteditable="true" spellcheck="false" onfocusout="data[Object.keys(data)[${val}]].title=this.innerText;">${element.title}</h5>
-                    <p id="Timer${val}" contenteditable="true" onfocusin="data[Object.keys(data)[${val}]].estado='edit';" onfocusout="timer2millis(this,data[Object.keys(data)[${val}]]);data[Object.keys(data)[${val}]].estado='start';" class="card-text m-4 h1">00:00</p>
+                    <h5 class="card-title pb-2 border-bottom" contenteditable="true" spellcheck="false" onfocusout="data[Object.keys(data)[${index}]].title=this.innerText;">${element.title}</h5>
+                    <a class="text-reset" href="#" onclick="mainBrick=data[${index}];updateBricks();" style="transform: rotateZ(90deg);position: absolute;top: 0%;right: 0%;">⇱</a>
+                    <div class="h4 row" style="position: absolute;right: 0%;transform: translateY(12%);">
+                        <span class="col-12" style="${!element.TemporizadorT_CronometroF ? 'filter: opacity(0.2);' : ''}" onclick="data[Object.keys(data)[${index}]].TemporizadorT_CronometroF=!data[Object.keys(data)[${index}]].TemporizadorT_CronometroF;updateBricks();">⏱️</span>
+                        <span class="col-12" style="${element.TemporizadorT_CronometroF ? 'filter: opacity(0.2);' : ''}" onclick="data[Object.keys(data)[${index}]].TemporizadorT_CronometroF=!data[Object.keys(data)[${index}]].TemporizadorT_CronometroF;updateBricks();">⏳</span>
+                    </div>
+                    <p id="Timer${index}" contenteditable="true" onfocusin="focusEvent(data[Object.keys(data)[${index}]],'in')" onfocusout="focusEvent(data[Object.keys(data)[${index}]],'out',this)" class="card-text m-4 h1">${timeFormat(element.AcumMilliSeconds)}</p>
                     <div class="btn-group w-100" role="group" aria-label="Basic mixed styles example">
-                        <button type="button" class="btn btn-success py-0" onclick="data[Object.keys(data)[${val}]].inicio= new Date();data[Object.keys(data)[${val}]].paused = false;">Start</button>
-                        <button type="button" class="btn btn-warning py-0" onclick="data[Object.keys(data)[${val}]].paused = !data[Object.keys(data)[${val}]].paused;">Pause</button>
-                        <button type="button" class="btn btn-danger py-0" onclick="data[Object.keys(data)[${val}]].final= new Date();data[Object.keys(data)[${val}]].AcumMilliSeconds=0;data[Object.keys(data)[${val}]].paused = true;">Stop</button>
+                        <button type="button" class="btn btn-success py-0" onclick="startTimer(data[Object.keys(data)[${index}]]);">Start</button>
+                        <button type="button" class="btn btn-warning py-0" onclick="pauseTimer(data[Object.keys(data)[${index}]]);">Pause</button>
+                        <button type="button" class="btn btn-danger py-0" onclick="stopTimer(data[Object.keys(data)[${index}]]);">Stop</button>
                     </div>
                 </div>
                 <div class="progress">
-                    <div id="timeProgress${val}" class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0"
+                    <div id="timeProgress${index}" class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0"
                         aria-valuemax="100"></div>
                 </div>
 
                 <div>
-                    <div class="collapse" id="collapseExample${val}">
+                    <div class="collapse" id="collapseExample${index}">
                         <ul class="list-group list-group-flush text-center">
-                            ${element.children ? Object.values(element.children).map(child => `<li class="list-group-item">${child.title}</li>`).join('') : ``}
+                            ${element.children ? Object.values(element.children).map(child => `<a href="#" class="list-group-item">${data[child].title}</a>`).join('') : ``}
                             <li class="list-group-item p-0"></li>
                         </ul>
                     </div>
                     <a class="h1 text-reset text-decoration-none text-center" data-bs-toggle="collapse"
-                        href="#collapseExample${val}" role="button" aria-expanded="false" aria-controls="collapseExample${val}">
+                        href="#collapseExample${index}" role="button" aria-expanded="false" aria-controls="collapseExample${index}">
                         ${element.children ?
-                    `<h3
-                            onmousedown="document.getElementById('collapseExample${val}').classList.contains('show')?this.style.transform='scaleY(1)':this.style.transform='scaleY(-1)';">
-                            ▽
+                        `<h3
+                            onmousedown="document.getElementById('collapseExample${index}').classList.contains('show')?this.style.transform='scaleY(1)':this.style.transform='scaleY(-1)';">
+                            <span class="pe-1">📝</span>
                         </h3>`
-                    : ``}
+                        : ``}
                         
                     </a>
                 </div>
             </div>
         </div>
             `
-            console.log(element);
-            main.innerHTML += template;
-        });
+                console.log(element);
+                main.innerHTML += template;
+            });
+        }
     </script>
     <script>
         document.addEventListener('pointerdown', function (event) {
@@ -307,12 +390,11 @@
     </script>
 
     <script>
-        function timer2millis(time,element){
-            a=time.innerText.split(":");
+        function timer2millis(node, element) {
+            a = node.innerText.split(":");
             a.reverse();
             console.log(a);
-            element.AcumMilliSeconds=a[0]*1000+a[1]*1000*60+(a[2]?a[2]*1000*60*60:0);
-            console.log(element.AcumMilliSeconds);
+            return a[0] * 1000 + a[1] * 1000 * 60 + (a[2] ? a[2] * 1000 * 60 * 60 : 0);
         }
     </script>
 </body>
