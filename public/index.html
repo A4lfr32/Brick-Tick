@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrickTick</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<!-- Nivel 0 -->
+
+<body class="container-flex">
+    <!-- Nivel 1,1 -->
+    <header id="header" class="container row pt-3 text-center">
+        <div class="col-xl-3 col-lg-6 text-start">
+            <a id="backButton" class="btn btn-light" href="#" onclick="mainBrick=data[mainBrick.parent];updateBricks();"
+                style="filter: grayscale(1);">🔙</a> <!-- back button -->
+            <a class="btn btn-light active" href="https://paypal.me/a4lfr32?country.x=CO&locale.x=es_XC">Support</a>
+            <select title="testTitle" class="btn btn-light ps-1 pe-0" name="language" disabled="">
+                <option value="english">En</option>
+                <option value="spanish">Es</option>
+            </select>
+            <!--a href="perfil.html" style="background-color: silver;">Perfil</a-->
+        </div>
+        <div class="col-xl-6 col-lg-6 mb-1">
+            <!-- <a class="col h1 pe-1 text-reset text-decoration-none" style="font-weight: bold;" href="#body">tracktimer</a><small>47</small> -->
+            <a id="mainTitle" class="col h1 pe-1 text-reset text-decoration-none" style="font-weight: bold;"
+                href="#body">BrickTick</a><small>47</small>
+        </div>
+        <div class="col-xl-3 col-lg-6 text-end">
+            <a id="AddNewTimer_btn1" class="btn btn-light" style="filter: grayscale(1);"
+                onclick="localStorage.setItem('mydata', JSON.stringify(data));">Save</a>
+            <a class="btn btn-light active" href="#" onclick="localStorage.clear();">Clear</a>
+            <a id="AddNewTimer_btn" class="btn btn-light" style="filter: grayscale(1);">+</a>
+            <!-- <select title="testTitle2" class="btn btn-light ps-1 pe-0" name="language" disabled="">
+                <option value="english">En</option>
+                <option value="spanish">Es</option>
+            </select> -->
+            <!--a href="perfil.html" style="background-color: silver;">Perfil</a-->
+        </div>
+    </header>
+    <!-- <div class="col-12 h1">00:00 </div> -->
+
+    <!-- Nivel 1,2 -->
+    <!-- ☁⚜🔘🕖🗨⇲⇱ -->
+    <div id="main" class="row g-4 p-4 flex-row flex-nowrap mx-5">
+        <!-- <div class="col-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title pb-2 border-bottom">Study
+                        <div style="transform: rotateZ(90deg);position: absolute;top: 0%;right: 0%;">⇱</div>
+                    </h5>
+                    <p class="card-text m-4 h1 timeTag">16:59</p>
+                    <div class="btn-group w-100 pb-0" role="group" aria-label="Basic mixed styles example">
+                        <button type="button" class="btn btn-success py-0"
+                            onclick="duration= new Date(2020,4,5,0,1,0,0);paused = false;">Start</button>
+                        <button type="button" class="btn btn-warning py-0" onclick="paused = !paused;">Pause</button>
+                        <button type="button" class="btn btn-danger py-0"
+                            onclick="duration= new Date(2020,4,5,0,0,0,0);paused = true;">Stop</button>
+                    </div>
+                </div>
+                <div class="progress">
+                    <div id="timeProgress" class="progress-bar" role="progressbar" style="width: 17%" aria-valuenow="25"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+
+                <div>
+                    <div class="collapse" id="collapseExample">
+                        <ul class="list-group list-group-flush text-center">
+                            <li class="list-group-item">An item</li>
+                            <li class="list-group-item">A second item</li>
+                            <li class="list-group-item">A third item</li>
+                            <li class="list-group-item">A fourth item</li>
+                            <li class="list-group-item">And a fifth one</li>
+                            <li class="list-group-item p-0"></li>
+                        </ul>
+                    </div>
+                    <a class="h1 text-reset text-decoration-none text-center" data-bs-toggle="collapse"
+                        href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <h3
+                            onmousedown="document.getElementById('collapseExample').classList.contains('show')?this.style.transform='scaleY(1)':this.style.transform='scaleY(-1)';">
+                            <span class="pe-1">📜</span>
+                        </h3>
+                    </a>
+                </div>
+            </div>
+        </div> -->
+
+
+
+    </div>
+
+
+    <!-- Nivel 1,3 -->
+    <!-- La barra inferior -->
+    <div class="progress">
+        <div id="generalTimer" class="progress-bar text-start" role="progressbar" aria-valuenow="25" aria-valuemin="0"
+            aria-valuemax="100">
+            <div id="bike" class="h1">
+                🚴🏻‍♂️
+            </div>
+        </div>
+        <div id="flag" class="ms-auto h2">
+            🏁
+        </div>
+    </div>
+
+    <footer>
+        Made by: Alfredo Maussa
+        <br>
+        © BrickTick 2022
+    </footer>
+    <script src="js/data.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/addNewTimer_lab.js"></script>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyBlqHg9KXKv5NQFOCmaKAE8u6jpK4gUriM",
+            authDomain: "brick-tick.firebaseapp.com",
+            projectId: "brick-tick",
+            storageBucket: "brick-tick.appspot.com",
+            messagingSenderId: "911619356787",
+            appId: "1:911619356787:web:87894c39a300446f3c1206",
+            measurementId: "G-Q083W0TRS1"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
+</body>
+
+</html>

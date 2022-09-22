@@ -1,0 +1,101 @@
+data = {
+    "BrickTick": {
+        "title": "BrickTick",
+        "inicio": new Date(),
+        "actualTime": new Date(),
+        "final": new Date(),
+        "lastTime": new Date(),
+        "AcumMilliSeconds": 0,
+        "porcentaje": 0.0,
+        "estado": "start",
+        "paused": false,
+        "TemporizadorT_CronometroF": false,
+        "children": ["0", "1", "2"]
+    },
+    "0": {
+        "title": "Freelance",
+        "inicio": new Date(),
+        "actualTime": new Date(),
+        "final": new Date(),
+        "lastTime": new Date(),
+        "AcumMilliSeconds": 0,
+        "porcentaje": 0.4,
+        "estado": "start",
+        "paused": true,
+        "TemporizadorT_CronometroF": true,
+        "children": [],
+        "parent": "BrickTick"
+    },
+
+    "1": {
+        "title": "Code",
+        "inicio": new Date(),
+        "actualTime": new Date(),
+        "final": new Date(),
+        "lastTime": new Date(),
+        "AcumMilliSeconds": 0,
+        "porcentaje": 0.0,
+        "estado": "start",
+        "paused": true,
+        "TemporizadorT_CronometroF": false,
+        "children": [3, 4, 5],
+        "parent": "BrickTick"
+
+    },
+    "2": {
+        "title": "Learning",
+        "inicio": new Date(),
+        "actualTime": new Date(),
+        "final": new Date(),
+        "lastTime": new Date(),
+        "AcumMilliSeconds": 0,
+        "porcentaje": 0.0,
+        "estado": "start",
+        "paused": true,
+        "TemporizadorT_CronometroF": true,
+        "children": [],
+        "parent": "BrickTick"
+    },
+    "3": {
+        "title": "Languages",
+        "inicio": new Date(),
+        "actualTime": new Date(),
+        "final": new Date(),
+        "lastTime": new Date(),
+        "AcumMilliSeconds": 0,
+        "porcentaje": 0.0,
+        "estado": "start",
+        "paused": true,
+        "TemporizadorT_CronometroF": true,
+        "children": [],
+        "parent": "BrickTick"
+    },
+    "4": {
+        "title": "Study4",
+        "inicio": new Date(),
+        "actualTime": new Date(),
+        "final": new Date(),
+        "lastTime": new Date(),
+        "AcumMilliSeconds": 0,
+        "porcentaje": 0.0,
+        "estado": "start",
+        "paused": true,
+        "TemporizadorT_CronometroF": true,
+        "children": [5, 1],
+        "parent": "BrickTick"
+    },
+    "5": {
+        "title": "Study5",
+        "inicio": new Date(),
+        "actualTime": new Date(),
+        "final": new Date(),
+        "lastTime": new Date(),
+        "AcumMilliSeconds": 0,
+        "porcentaje": 0.0,
+        "estado": "start",
+        "paused": true,
+        "TemporizadorT_CronometroF": true,
+        "children": [],
+        "parent": "BrickTick"
+    }
+}

@@ -1,0 +1,88 @@
+{
+    "0": {
+        "title": "Study",
+        "inicio": new Date(),
+        "actualTime": new Date(),
+        "final": new Date(),
+        "lastTime": new Date(),
+        "AcumMilliSeconds": 0,
+        "porcentaje": 0.4,
+        "estado": "start",
+        "paused": true,
+        "TemporizadorT_CronometroF": true,
+        "children": {
+            "1": {
+                "title": "Piano",
+                "inicio": new Date(),
+                "actualTime": new Date(),
+                "final": new Date(),
+                "lastTime": new Date(),
+                "AcumMilliSeconds": 0,
+                "porcentaje": 0.0,
+                "estado": "start",
+                "paused": true,
+                "TemporizadorT_CronometroF": false
+            },
+            "2": {
+                "title": "Piano",
+                "inicio": new Date(),
+                "actualTime": new Date(),
+                "final": new Date(),
+                "lastTime": new Date(),
+                "AcumMilliSeconds": 0,
+                "porcentaje": 0.0,
+                "estado": "start",
+                "paused": true,
+                "TemporizadorT_CronometroF": false
+            }
+        }
+    },
+    "1": {
+        "title": "Piano",
+        "inicio": new Date(),
+        "actualTime": new Date(),
+        "final": new Date(),
+        "lastTime": new Date(),
+        "AcumMilliSeconds": 0,
+        "porcentaje": 0.0,
+        "estado": "start",
+        "paused": true,
+        "TemporizadorT_CronometroF": false
+    },
+    "2": {
+        "title": "Rutina",
+        "inicio": new Date(),
+        "actualTime": new Date(),
+        "final": new Date(),
+        "lastTime": new Date(),
+        "AcumMilliSeconds": 0,
+        "porcentaje": 0.0,
+        "estado": "start",
+        "paused": true,
+        "TemporizadorT_CronometroF": true
+    },
+    "3": {
+        "title": "15min Freelance",
+        "inicio": new Date(),
+        "actualTime": new Date(),
+        "final": new Date(),
+        "lastTime": new Date(),
+        "AcumMilliSeconds": 0,
+        "porcentaje": 0.0,
+        "estado": "start",
+        "paused": true,
+        "TemporizadorT_CronometroF": true
+    },
+    "4": {
+        "title": "Study",
+        "inicio": new Date(),
+        "actualTime": new Date(),
+        "final": new Date(),
+        "lastTime": new Date(),
+        "AcumMilliSeconds": 0,
+        "porcentaje": 0.0,
+        "estado": "start",
+        "paused": true,
+        "TemporizadorT_CronometroF": true
+    }
+}
