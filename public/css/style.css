@@ -1,0 +1,61 @@
+body {
+  text-align: -webkit-center;
+}
+
+header {
+  border-bottom: inset;
+  font-family: system-ui;
+  /* position: fixed; */
+  /* top: 0px; */
+  background-color: white;
+  z-index: 1;
+  /* left: 50%; transform-origin: center; */
+  /* transform: translateX(-50%); */
+}
+
+.progress {
+  left: 0%;
+  bottom: 0%;
+  position: fixed;
+  width: -webkit-fill-available;
+  height: 8%;
+  background: linear-gradient(
+    0deg,
+    #e9ecef 0%,
+    rgb(221 222 223) 65%,
+    rgb(255 255 255 / 0%) 72%
+  );
+}
+
+.progress > #generalTimer {
+  width: 0%;
+  background: linear-gradient(
+    0deg,
+    rgb(25 135 84) 0%,
+    rgba(0, 212, 255, 0) 50%
+  );
+}
+
+.progress #bike {
+  color: black;
+  flex: auto;
+  transform: rotateY(190deg);
+  z-index: 1;
+}
+
+.progress #flag {
+  width: 0px;
+  left: -4%;
+  position: relative;
+}
+
+option, a, select {
+    font-weight: 900;
+}
+
+footer {
+  position: absolute;
+  bottom: 7%;
+  left: 50%;
+  transform: translateX(-50%);
+}
